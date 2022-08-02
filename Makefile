@@ -6,3 +6,6 @@ publish:
 
 lint: 
 	npx eslint .
+
+gendiff:
+	npx gendiff -h

@@ -5,7 +5,10 @@ publish:
 	npm publish --dry-run
 
 lint: 
-	npx eslint .
+	npx eslint .  --fix
 
 gendiff:
 	npx gendiff -h
+
+rec:
+	asciinema rec

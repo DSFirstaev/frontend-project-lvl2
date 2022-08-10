@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/DSFirstaev/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/DSFirstaev/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,19 +11,22 @@
     "type": "git",
     "url": "git+https://github.com/DSFirstaev/frontend-project-lvl2.git"
   },
-  "author": "",
+  "author": "Dmitry Firstaev",
   "license": "ISC",
-  "bin": {
-    "gendiff": "/bin/gendiff.js"
-  },
   "bugs": {
     "url": "https://github.com/DSFirstaev/frontend-project-lvl2/issues"
   },
   "homepage": "https://github.com/DSFirstaev/frontend-project-lvl2#readme",
+  "bin": {
+    "gendiff": "/bin/gendiff.js"
+  },
   "dependencies": {
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "eslint": "^8.21.0"
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   }
 }

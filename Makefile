@@ -18,3 +18,6 @@ test-coverage:
 
 test:
 	node --experimental-vm-modules node_modules/jest/bin/jest.js
+
+install-deps:
+	npm ci

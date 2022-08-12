@@ -5,8 +5,10 @@ import plainObject from '../__fixtures__/result.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const getFixturePath = (filename) => path.resolve(__dirname, './..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.resolve(__dirname, './..', filename);
+const filePath1 = './__fixtures__/file1.json';
+const filePath2 = './__fixtures__/file2.json';
 
-test('genDiff', (filePath1, filePath2) => {
+test('genDiff', () => {
   expect(genDiff(getFixturePath(filePath1), getFixturePath(filePath2))).toBe(plainObject);
 });

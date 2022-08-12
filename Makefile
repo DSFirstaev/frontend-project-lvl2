@@ -13,8 +13,8 @@ gendiff:
 rec:
 	asciinema rec
 
-text-coverage:
-	npm test -- --coverage  --coverageProvider=v8
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8
 
 test:
 	node --experimental-vm-modules node_modules/jest/bin/jest.js

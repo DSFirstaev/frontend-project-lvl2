@@ -24,7 +24,7 @@ jobs:
         env:
           CI: true
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.4
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${ MY_SECRET_NAME }
         with:

@@ -8,7 +8,7 @@ lint:
 	npx eslint .  --fix
 
 gendiff:
-	npx gendiff -h
+	npx gendiff __fixtures__/file1.yaml __fixtures__/file2.yaml
 
 rec:
 	asciinema rec
@@ -17,7 +17,4 @@ test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
 test:
-	node --experimental-vm-modules node_modules/jest/bin/jest.js
-
-install-deps:
-	npm ci
+	npm test

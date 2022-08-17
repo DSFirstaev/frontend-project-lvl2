@@ -1,11 +1,14 @@
-import { readFileSync } from 'node:fs';
 import _ from 'lodash';
+import { readFile, defineFileType, buildFullPath } from './utils.js';
+import parseFile from './parser.js';
 
 const makeLine = (sign, key, value) => `  ${sign} ${key}: ${value}`;
 
 export default (filepath1, filepath2) => {
-  const dataParse1 = JSON.parse(readFileSync(filepath1, 'utf-8'));
-  const dataParse2 = JSON.parse(readFileSync(filepath2, 'utf-8'));
+  const fileType1 = defineFileType(filepath1);
+  const fileType2 = defineFileType(filepath2);
+  const dataParse1 = parseFile(fileType1, readFile(buildFullPath(filepath1)));
+  const dataParse2 = parseFile(fileType2, readFile(buildFullPath(filepath2)));
   const keys1 = _.keys(dataParse1);
   const keys2 = _.keys(dataParse2);
   const keys = _.union(keys1, keys2);

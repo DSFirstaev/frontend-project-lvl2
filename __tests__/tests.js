@@ -1,7 +1,7 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
-import plainObject from '../__fixtures__/result.js';
+import deepObject from '../__fixtures__/result.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,15 +15,15 @@ const filePathYml2 = './__fixtures__/file2.yml';
 const filePathTxt = './__fixtures__/file1.txt';
 
 test('genDiff', () => {
-  expect(genDiff(getFixturePath(filePath1), getFixturePath(filePath2))).toBe(plainObject);
+  expect(genDiff(getFixturePath(filePath1), getFixturePath(filePath2))).toBe(deepObject);
 });
 
 test('genDiffYaml', () => {
-  expect(genDiff(getFixturePath(filePathYaml1), getFixturePath(filePathYaml2))).toBe(plainObject);
+  expect(genDiff(getFixturePath(filePathYaml1), getFixturePath(filePathYaml2))).toBe(deepObject);
 });
 
 test('genDiffYml', () => {
-  expect(genDiff(getFixturePath(filePathYml1), getFixturePath(filePathYml2))).toBe(plainObject);
+  expect(genDiff(getFixturePath(filePathYml1), getFixturePath(filePathYml2))).toBe(deepObject);
 });
 
 test('error', () => {

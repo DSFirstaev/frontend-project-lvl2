@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-export const buildFullPath = (filename) => path.resolve(process.cwd(), filename);
+export const buildFullPath = (filePath) => path.resolve(process.cwd(), filePath);
 
 export const readFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
 
@@ -9,3 +9,5 @@ export const defineFileType = (filePath) => {
   const fileType = path.extname(filePath).slice(1);
   return fileType;
 };
+
+console.log(buildFullPath('file1.json'));

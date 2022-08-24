@@ -9,5 +9,3 @@ export const defineFileType = (filePath) => {
   const fileType = path.extname(filePath).slice(1);
   return fileType;
 };
-
-console.log(buildFullPath('file1.json'));

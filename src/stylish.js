@@ -17,26 +17,26 @@ const stringify = (data, depth) => {
 };
 
 // const makeLine = (depth, sign, key, value) =>
-// `${makeIndent(depth)}${sign} ${key}: ${stringify(value, depth)}`;
-
+// `${indent(depth)}${sign} ${key}: ${stringify(value, depth)}`;
+// indent
 const makeTree = (initialTree) => {
   const iter = (tree, depth) => tree.map((node) => {
     switch (node.type) {
       case 'added':
         // return makeLine(depth, '+', node.key, node.value);
-        return `    ${'+'} ${node.key}: ${stringify(node.value, depth)}`;
+        return `${makeIndent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
       case 'removed':
         // return makeLine(depth, '-', node.key, node.value);
-        return `    ${'-'} ${node.key}: ${stringify(node.value, depth)}`;
+        return `${makeIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
       case 'nested':
         return `${makeIndent(depth)}${node.key}: {\n${iter(node.children, depth + 1).join('\n')}\n${makeIndent(depth)}}`;
       case 'changed':
         // return `${makeLine(depth, '-', node.key, node.value1)}\n
         // ${makeLine(depth, '+', node.key, node.value2)}`;
-        return `    ${'-'} ${node.key}: ${stringify(node.value1, depth)}\n    ${'+'} ${node.key}: ${stringify(node.value2, depth)}`;
+        return `${makeIndent(depth)}- ${node.key}: ${stringify(node.value1, depth)}\n${makeIndent(depth)}${'+'} ${node.key}: ${stringify(node.value2, depth)}`;
       case 'unchanged':
         // return makeLine(depth, ' ', node.key, node.value);
-        return `    ${' '} ${node.key}: ${stringify(node.value, depth)}`;
+        return `${makeIndent(depth)} ${node.key}: ${stringify(node.value, depth)}`;
       default:
         return new Error('This tree is bad. Try another tree');
     }

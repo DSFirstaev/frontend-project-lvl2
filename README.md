@@ -13,3 +13,5 @@
 ### GenDiff file1.yaml file2.yaml
 [![asciicast](https://asciinema.org/a/0G2Jjq4xMBbBjJ2nYZaL3MiLH.svg)](https://asciinema.org/a/0G2Jjq4xMBbBjJ2nYZaL3MiLH)
 
+### GenDiff file1.json file2.json stylish
+[![asciicast](https://asciinema.org/a/20xcYTQMjUbmsac9sdjYpiTle.svg)](https://asciinema.org/a/20xcYTQMjUbmsac9sdjYpiTle)

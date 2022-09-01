@@ -7,6 +7,8 @@ const format = (type, treeOfDifference) => {
       return formatTree(treeOfDifference);
     case 'plain':
       return formatPlain(treeOfDifference);
+    case 'json':
+      return JSON.stringify(treeOfDifference);
     default:
       return `${type} is not right format. Use 'stylish' or 'plain'`;
   }

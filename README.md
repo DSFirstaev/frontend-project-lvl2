@@ -16,5 +16,5 @@
 ### GenDiff file1.json file2.json stylish
 [![asciicast](https://asciinema.org/a/20xcYTQMjUbmsac9sdjYpiTle.svg)](https://asciinema.org/a/20xcYTQMjUbmsac9sdjYpiTle)
 
-### GenDiff file1.json file2.json stylish and plain format
-[![asciicast](https://asciinema.org/a/3XcdPA4Czzyt7kmdR7RGyMZui.svg)](https://asciinema.org/a/3XcdPA4Czzyt7kmdR7RGyMZui)
+### GenDiff file1.json file2.json stylish plain and json formats
+[![asciicast](https://asciinema.org/a/B7IPi2aziqwEMjvFD84iknlYH.svg)](https://asciinema.org/a/B7IPi2aziqwEMjvFD84iknlYH)

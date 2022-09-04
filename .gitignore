@@ -1,5 +1,5 @@
 node_modules
-/coverage/
-/dmitry_f.code-workspace/
+/coverage
+/dmitry_f.code-workspace
 /__fixtures__/asttree1.js
-/.vscode/
+/.vscode

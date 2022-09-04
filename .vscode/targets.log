@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep  1 20:43:43 2022
+# Make data base, printed on Sun Sep  4 14:19:25 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ make: *** No rule to make target 'all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
 # default
 .SHELLFLAGS := -c
 # automatic
@@ -31,9 +31,9 @@ CURDIR := /home/dmitry_f/frontend-project-lvl2
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"e2673fac9b3b0beb38d486c37331d2f9.ru","_translationsConfigFile":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/tcf.json","_cacheRoot":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru","_resolvedLanguagePackCoreLocation":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"e2673fac9b3b0beb38d486c37331d2f9.ru","_translationsConfigFile":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/tcf.json","_cacheRoot":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru","_resolvedLanguagePackCoreLocation":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/784b0177c56c607789f9638da7b6bf3230d47a8c","_corruptedFile":"/home/dmitry_f/.vscode-server/data/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /home/dmitry_f/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
+_ = /home/dmitry_f/.vscode-server/bin/784b0177c56c607789f9638da7b6bf3230d47a8c/node
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -47,11 +47,13 @@ VSCODE_CWD = /mnt/c/Users/dmitr/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/dmitry_f/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dmitr/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dmitr/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+PATH = /home/dmitry_f/.vscode-server/bin/784b0177c56c607789f9638da7b6bf3230d47a8c/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/dmitr/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dmitr/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dmitr/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-325306f6-752c-49fc-b966-28117ddef97f.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-3c81032e-bdfb-42ec-9df0-48458da96546.sock
+# environment
+VSCODE_SERVER_TAR = /mnt/c/Users/dmitr/AppData/Local/Temp/vscode-remote-wsl/784b0177c56c607789f9638da7b6bf3230d47a8c/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -63,7 +65,7 @@ PWD = /home/dmitry_f/frontend-project-lvl2
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/13_interop
+WSL_INTEROP = /run/WSL/14_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -138,8 +140,10 @@ LANG = C
 TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=4/88=5%
+# Load=65/1024=6%, Rehash=0, Collisions=4/90=4%
 
 # Pattern-specific Variable Values
 
@@ -240,6 +244,6 @@ install:
 # strcache performance: lookups = 42 / hit rate = 26%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=1/42=2%
-# Finished Make data base on Thu Sep  1 20:43:43 2022
+# Finished Make data base on Sun Sep  4 14:19:25 2022
 
  

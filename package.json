@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/DSFirstaev/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/DSFirstaev/frontend-project-lvl2/actions)",
+  "description": "Calculator of differences between two files. Work with JSON, Yaml, Yml",
   "main": "gendiff.js",
   "scripts": {
     "test": "npx jest"

@@ -1,1 +1,0 @@
-{"buildTargets":["gendiff","install","lint","publish","rec","test","test-coverage"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

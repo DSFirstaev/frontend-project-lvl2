@@ -1,13 +1,23 @@
-import { readFile, defineFileType, buildFullPath } from './utils.js';
-import parseFile from './parser.js';
-import makeASTTree from './buildASTTree.js';
+import path from 'path';
+import fs from 'fs';
+import parse from './parser.js';
+import makeInternalTree from './makeInternalTree.js';
 import format from './formatters/index.js';
 
-export default (filepath1, filepath2, type = 'stylish') => {
-  const fileType1 = defineFileType(filepath1);
-  const fileType2 = defineFileType(filepath2);
-  const dataParse1 = parseFile(fileType1, readFile(buildFullPath(filepath1)));
-  const dataParse2 = parseFile(fileType2, readFile(buildFullPath(filepath2)));
-  const ASTTree = makeASTTree(dataParse1, dataParse2);
-  return format(type, ASTTree);
+const buildFullPath = (filePath) => path.resolve(process.cwd(), filePath);
+
+const readFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
+
+const extractFormat = (filePath) => {
+  const fileType = path.extname(filePath).slice(1);
+  return fileType;
+};
+
+const getData = (file) => parse(extractFormat(file), readFile(buildFullPath(file)));
+
+export default (file1, file2, type = 'stylish') => {
+  const dataParse1 = getData(file1);
+  const dataParse2 = getData(file2);
+  const internalTree = makeInternalTree(dataParse1, dataParse2);
+  return format(type, indternalTree);
 };

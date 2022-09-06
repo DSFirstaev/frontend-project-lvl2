@@ -5,43 +5,43 @@ import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const getFixturePath = (filename) => path.resolve(__dirname, './..', filename);
-const filePath1 = './__fixtures__/file1.json';
-const filePath2 = './__fixtures__/file2.json';
-const filePathYaml1 = './__fixtures__/file1.yaml';
-const filePathYaml2 = './__fixtures__/file2.yaml';
-const filePathYml1 = './__fixtures__/file1.yml';
-const filePathYml2 = './__fixtures__/file2.yml';
-const filePathTxt = './__fixtures__/file1.txt';
-const filePathResultTree = './__fixtures__/treeResult.txt';
-const filePathResultPlain = './__fixtures__/plainResult.txt';
-const treeFormat = readFileSync(getFixturePath(filePathResultTree), 'utf-8');
-const plainFormat = readFileSync(getFixturePath(filePathResultPlain), 'utf-8');
+const getFixturePath = (filename) => path.resolve(__dirname, '../__fixtures__/', filename);
+const filePathResultStylish = 'stylishResult.txt';
+const filePathResultPlain = 'plainResult.txt';
+const filePathResultJSON = 'jsonResult.txt';
+const stylishFormatResult = readFileSync(getFixturePath(filePathResultStylish), 'utf-8');
+const plainFormatResult = readFileSync(getFixturePath(filePathResultPlain), 'utf-8');
+const jsonFormatResult = readFileSync(getFixturePath(filePathResultJSON), 'utf-8');
 
-test('genDiffTreeJson', () => {
-  expect(genDiff(getFixturePath(filePath1), getFixturePath(filePath2))).toBe(treeFormat);
+describe('format JSON', () => {
+  test('genDiffJSON', () => {
+    expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish')).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toBe(plainFormatResult);
+    expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toBe(jsonFormatResult);
+    expect(() => genDiff(getFixturePath('file1.txt'), getFixturePath('file2.json'))).toThrow(Error);
+    expect(() => JSON.parse(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json')))).toBeTruthy();
+  });
 });
 
-test('genDiffTreeYaml', () => {
-  expect(genDiff(getFixturePath(filePathYaml1), getFixturePath(filePathYaml2))).toBe(treeFormat);
+describe('format Yaml', () => {
+  test('genDiffYaml', () => {
+    expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'))).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'plain')).toBe(plainFormatResult);
+    expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'stylish')).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'json')).toBe(jsonFormatResult);
+    expect(() => genDiff(getFixturePath('file1.txt'), getFixturePath('file2.yaml'))).toThrow(Error);
+    expect(() => JSON.parse(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml')))).toBeTruthy();
+  });
 });
 
-test('genDiffTreeYml', () => {
-  expect(genDiff(getFixturePath(filePathYml1), getFixturePath(filePathYml2))).toBe(treeFormat);
-});
-
-test('genDiffPlainJson', () => {
-  expect(genDiff(getFixturePath(filePath1), getFixturePath(filePath2), 'plain')).toBe(plainFormat);
-});
-
-test('genDiffPlainYaml', () => {
-  expect(genDiff(getFixturePath(filePathYaml1), getFixturePath(filePathYaml2), 'plain')).toBe(plainFormat);
-});
-
-test('genDiffPlainYml', () => {
-  expect(genDiff(getFixturePath(filePathYml1), getFixturePath(filePathYml2), 'plain')).toBe(plainFormat);
-});
-
-test('error', () => {
-  expect(() => genDiff(getFixturePath(filePathTxt), getFixturePath(filePath2))).toThrow(Error);
+describe('format Yml', () => {
+  test('genDiffYml', () => {
+    expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'stylish')).toBe(stylishFormatResult);
+    expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain')).toBe(plainFormatResult);
+    expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json')).toBe(jsonFormatResult);
+    expect(() => genDiff(getFixturePath('file1.txt'), getFixturePath('file2.yml'))).toThrow(Error);
+    expect(() => JSON.parse(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml')))).toBeTruthy();
+  });
 });

@@ -36,7 +36,7 @@ Linux or Mac OS
 
 Just type the connd in command line:
 
-`gendiff -format <'stylish', 'plain' or 'json'> <path to file1> <path to file2>`
+`gendiff --format <'stylish', 'plain' or 'json'> <path to file1> <path to file2>`
 
 ### GenDiff file1.json file2.json
 [![asciicast](https://asciinema.org/a/ymRZjEn8JAuYr12yV0sHZuFBZ.svg)](https://asciinema.org/a/ymRZjEn8JAuYr12yV0sHZuFBZ)

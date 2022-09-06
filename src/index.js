@@ -19,5 +19,5 @@ export default (file1, file2, type = 'stylish') => {
   const dataParse1 = getData(file1);
   const dataParse2 = getData(file2);
   const internalTree = makeInternalTree(dataParse1, dataParse2);
-  return format(type, indternalTree);
+  return format(type, internalTree);
 };

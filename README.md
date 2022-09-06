@@ -16,6 +16,7 @@
 
 ## System requirements
 Node.js version: v17.9.0
+
 Linux or Mac OS
 
 ## How to install
@@ -34,7 +35,7 @@ Linux or Mac OS
 
 ## How to use
 
-Just type the connd in command line:
+Just type in command line:
 
 `gendiff --format <'stylish', 'plain' or 'json'> <path to file1> <path to file2>`
 

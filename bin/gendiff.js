@@ -13,5 +13,5 @@ program
   .argument('<filepath2>', 'path to file2')
   .action((filepath1, filepath2) => {
     console.log(genDiff(filepath1, filepath2, program.opts().format));
-  });
-program.parse(process.argv);
+  })
+  .parse(process.argv);

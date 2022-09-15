@@ -18,12 +18,10 @@ describe('genDiff', () => {
   ])('genDiff(%s, %s)', (format) => {
     const filepath1 = getPath(`file1.${format}`);
     const filepath2 = getPath(`file2.${format}`);
-    const filepath3 = getPath('file1.txt');
     expect(genDiff(getPath(filepath1), getPath(filepath2), 'stylish')).toBe(stylishFormatResult);
     expect(genDiff(getPath(filepath1), getPath(filepath2), 'plain')).toBe(plainFormatResult);
     expect(genDiff(getPath(filepath1), getPath(filepath2), 'json')).toBe(jsonFormatResult);
     expect(genDiff(getPath(filepath1), getPath(filepath2))).toBe(stylishFormatResult);
-    expect(() => genDiff(getPath(filepath3), getPath(filepath2))).toThrow(Error);
     expect(() => JSON.parse(genDiff(getPath(filepath1), getPath(filepath2)))).toBeTruthy();
   });
 });

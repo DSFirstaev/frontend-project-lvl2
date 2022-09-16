@@ -3,13 +3,13 @@ import _ from 'lodash';
 const indent = (depth, beginValue = 4) => ' '.repeat(beginValue * depth - 2);
 
 const stringify = (data, depth, nodeTypes) => {
-  if (_.isPlainObject(data) === false) {
+  if (_.isObject(data) === false) {
     return `${data}`;
   }
 
   const output = Object.entries(data)
     .map(([key, value]) => nodeTypes.unchanged({ key, value }, depth + 1));
-  return ['{', ...output, `${indent(depth)}  }`].join('\n');
+  return `{\n${[...output].join('\n')}\n${indent(depth)}  }`;
 };
 
 const nodeTypes = {

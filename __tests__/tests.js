@@ -1,27 +1,30 @@
-import path, { dirname } from 'path';
+import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { readFileSync } from 'node:fs';
 import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const getPath = (filename) => path.resolve(__dirname, '../__fixtures__/', filename);
-const stylishFormatResult = readFileSync(getPath('stylishResult.txt'), 'utf-8');
-const plainFormatResult = readFileSync(getPath('plainResult.txt'), 'utf-8');
-const jsonFormatResult = readFileSync(getPath('jsonResult.txt'), 'utf-8');
+const __dirname = path.dirname(__filename);
+
+const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
+
+const readFixture = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf-8').trim();
+
+const stylishResult = readFixture('stylishResult.txt');
+const plainResult = readFixture('plainResult.txt');
+const jsonResult = readFixture('jsonResult.txt');
+
+const testList = ['json', 'yaml', 'yml'];
 
 describe('genDiff', () => {
-  test.each([
-    ['json', 'json'],
-    ['yaml', 'yaml'],
-    ['yml', 'yml'],
-  ])('genDiff(%s, %s)', (format) => {
-    const filepath1 = getPath(`file1.${format}`);
-    const filepath2 = getPath(`file2.${format}`);
-    expect(genDiff(getPath(filepath1), getPath(filepath2), 'stylish')).toBe(stylishFormatResult);
-    expect(genDiff(getPath(filepath1), getPath(filepath2), 'plain')).toBe(plainFormatResult);
-    expect(genDiff(getPath(filepath1), getPath(filepath2), 'json')).toBe(jsonFormatResult);
-    expect(genDiff(getPath(filepath1), getPath(filepath2))).toBe(stylishFormatResult);
-    expect(() => JSON.parse(genDiff(getPath(filepath1), getPath(filepath2)))).toBeTruthy();
+  test.each(
+    testList,
+  )('genDiff %s', (format) => {
+    const filepath1 = getFixturePath(`file1.${format}`);
+    const filepath2 = getFixturePath(`file2.${format}`);
+    expect(genDiff((filepath1), (filepath2))).toBe(stylishResult);
+    expect(genDiff((filepath1), (filepath2), 'stylish')).toBe(stylishResult);
+    expect(genDiff((filepath1), (filepath2), 'plain')).toBe(plainResult);
+    expect(genDiff((filepath1), (filepath2), 'json')).toBe(jsonResult);
   });
 });

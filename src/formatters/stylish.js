@@ -9,7 +9,7 @@ const stringify = (data, depth, nodeTypes) => {
 
   const output = Object.entries(data)
     .map(([key, value]) => nodeTypes.unchanged({ key, value }, depth + 1));
-  return `{\n${[...output].join('\n')}\n${indent(depth)}  }`;
+  return `{\n${output.join('\n')}\n${indent(depth)}  }`;
 };
 
 const nodeTypes = {
@@ -17,18 +17,18 @@ const nodeTypes = {
     const output = children.map((node) => nodeTypes[node.type](node, depth + 1));
     return `{\n${output.join('\n')}\n}`;
   },
-  added: (node, depth) => `${indent(depth)}+ ${node.key}: ${stringify(node.value, depth, nodeTypes)}`,
-  removed: (node, depth) => `${indent(depth)}- ${node.key}: ${stringify(node.value, depth, nodeTypes)}`,
+  added: ({ key, value }, depth) => `${indent(depth)}+ ${key}: ${stringify(value, depth, nodeTypes)}`,
+  removed: ({ key, value }, depth) => `${indent(depth)}- ${key}: ${stringify(value, depth, nodeTypes)}`,
   nested: ({ key, children }, depth) => {
     const output = children.map((node) => nodeTypes[node.type](node, depth + 1));
     return `${indent(depth)}  ${key}: {\n${output.join('\n')}\n${indent(depth)}  }`;
   },
-  changed: (node, depth) => {
-    const output1 = `${indent(depth)}- ${node.key}: ${stringify(node.value1, depth, nodeTypes)}`;
-    const output2 = `${indent(depth)}+ ${node.key}: ${stringify(node.value2, depth, nodeTypes)}`;
+  changed: ({ key, value1, value2 }, depth) => {
+    const output1 = `${indent(depth)}- ${key}: ${stringify(value1, depth, nodeTypes)}`;
+    const output2 = `${indent(depth)}+ ${key}: ${stringify(value2, depth, nodeTypes)}`;
     return `${output1}\n${output2}`;
   },
-  unchanged: (node, depth) => `${indent(depth)}  ${node.key}: ${stringify(node.value, depth, nodeTypes)}`,
+  unchanged: ({ key, value }, depth) => `${indent(depth)}  ${key}: ${stringify(value, depth, nodeTypes)}`,
 };
 
 const render = (tree) => {

@@ -1,16 +1,15 @@
 import _ from 'lodash';
 
-const getComplexValue = (value) => {
-  if (_.isPlainObject(value)) {
-    return '[complex value]';
-  }
-  if ((value === true) || (value === false) || (typeof (value) === 'number')) {
-    return String(value);
-  }
+const stringify = (value) => {
   if (typeof (value) === 'string') {
     return `'${value}'`;
   }
-  return null;
+
+  if (_.isPlainObject(value)) {
+    return '[complex value]';
+  }
+
+  return String(value);
 };
 
 const getPropertyName = (properties, property) => [...properties, property].join('.');
@@ -20,13 +19,13 @@ const nodeTypes = {
     const output = children.flatMap((node) => nodeTypes[node.type](node, path));
     return `${output.join('\n')}`;
   },
-  added: (node, path) => `Property '${getPropertyName(path, node.key)}' was added with value: ${getComplexValue(node.value)}`,
-  removed: (node, path) => `Property '${getPropertyName(path, node.key)}' was removed`,
+  added: ({ key, value }, path) => `Property '${getPropertyName(path, key)}' was added with value: ${stringify(value)}`,
+  removed: ({ key }, path) => `Property '${getPropertyName(path, key)}' was removed`,
   nested: ({ children, key }, path) => {
     const output = children.flatMap((node) => nodeTypes[node.type](node, [...path, key]));
     return `${output.join('\n')}`;
   },
-  changed: (node, path) => `Property '${getPropertyName(path, node.key)}' was updated. From ${getComplexValue(node.value1)} to ${getComplexValue(node.value2)}`,
+  changed: ({ key, value1, value2 }, path) => `Property '${getPropertyName(path, key)}' was updated. From ${stringify(value1)} to ${stringify(value2)}`,
   unchanged: () => [],
 };
 
@@ -36,18 +35,3 @@ const render = (tree) => {
 };
 
 export default render;
-
-// const makePlain = (nodes) => {
-//   const iter = (tree, parent) => tree.map((node) => [...parent, node.key].join('.'));
-//   return iter(nodes, []);
-// };
-
-// const makePlain = (treeOfDifference) => {
-//   const iter = (tree, parent) => {
-//     const result = tree.map((node) => {
-//       const path = [...parent, node.key].join('.');
-//     });
-//     return _.compact(result).join('\n');
-//   };
-//   return iter(treeOfDifference, []);
-// };

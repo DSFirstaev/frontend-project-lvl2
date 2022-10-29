@@ -14,7 +14,7 @@ rec:
 	asciinema rec
 
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8 --watch
+	npm test -- --coverage --coverageProvider=v8
 
 test:
 	npm test

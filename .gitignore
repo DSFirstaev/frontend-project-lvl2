@@ -3,3 +3,4 @@ node_modules
 /dmitry_f.code-workspace
 /__fixtures__/asttree1.js
 /.vscode
+__fixtures__/file1.txt
